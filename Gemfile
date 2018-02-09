@@ -4,6 +4,8 @@ ruby '2.2.6'
 
 gem 'rails', '4.0.8'
 gem 'minitest'
+gem 'bootstrap-sass', '2.3.2.0'
+gem 'sprockets', '2.11.0'
 gem 'test-unit'
 
 group :development, :test do
