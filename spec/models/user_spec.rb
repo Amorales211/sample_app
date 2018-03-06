@@ -17,6 +17,18 @@ describe User do
 
   it { should be_valid }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:admin) }
+  it { should be_valid }
+  it { should_not be_admin }
+
+  describe "with admin attribute set to 'true'" do
+    before do
+      @user.save!
+      @user.toggle!(:admin)
+    end
+
+    it { should be_admin }
+  end
 
 
   describe "when name is not present" do
@@ -39,6 +51,7 @@ describe User do
       addresses = %w[user@foo,com user_at_foo.org example.user@foo.
                      foo@bar_baz.com foo@bar+baz.com]
       addresses.each do |invalid_address|
+
         @user.email = invalid_address
         expect(@user).not_to be_valid
       end
